@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Alien Tracking application | Map of alien locations</title>
+    <meta name="description" content="This map shows the locations around the world where Alien has been seen.">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="revisit-after" content="7 days">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="canonical" href="http://www.kengreg.com/">
+    <link rel="shortcut icon" type="img/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./css/norz.css">
+    <link rel="stylesheet" href="./css/alien.css">
+    <link rel="stylesheet" href="./font-aw-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css">
+    <link link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
+    <link rel="stylesheet" href="./css/L.Control.ZoomBox.css">
+    <link rel="stylesheet" href="./css/leaflet.magnifyingglass.css">
+    <link rel="stylesheet" href="./css/Control.MagnifyingGlass.css">
+    <link rel="author" href="humans.txt">
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+    <script src="./js/L.Control.ZoomBox.js"></script>
+    <!--script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")-->
+    <script src="./js/leaflet.magnifyingglass.js"></script>
+    <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
+    <script src="./js/Google.js"></script>
+    <script src="./js/tracking.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- [if IE]>
+    <script src="./js/html5shiv.min.js"></script>
+    <script src="./js/respond.min.js"></script><![endif]
+    -->
+    <!-- [if lte IE 8]><link rel="stylesheet" type="text/css" href="./css/ie8-and-down.css" /><![endif]-->
+  </head>
+  <body onload="init()">
+    <div id="map"></div>
+    <div id="menu"><a id="menor" href="#menor" class="button menorq">menos de 5 min.</a><a id="min5" href="#menor5" class="button menorq">mas de 5 min.</a><a id="min15" href="#menor15" class="button menorq">mas de 15 min.</a><a id="min30" href="#menor30" class="button menorq">mas de 30 min.</a><a id="min45" href="#menor45" class="button menorq">mas de 45 min.</a><a id="hora" href="#hora" class="button menorq">mas de 1 h.</a><a id="all" href="#all" class="button all">Todas las apariciones</a></div>
+  </body>
+</html>

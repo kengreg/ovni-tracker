@@ -1,0 +1,30 @@
+/* TEAM */
+
+                            
+Frontend: Gregory - Kengreg.
+Site: ken-angel@hotmail.com
+Location: Panama.
+
+                         
+                 
+                        [...]
+						
+
+							
+/* THANKS */
+
+Name: Alien Application
+
+						
+                 
+                        [...]
+                        
+
+                            
+/* SITE */
+
+                            
+Last update: 2015/6/9 
+Standards: HTML5, CSS3, javascript
+Components: Normalize, jQuery, 
+Software: Boostrap framework

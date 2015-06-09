@@ -1,0 +1,242 @@
+
+<html>
+
+
+<head>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+  
+
+<!--<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script> -->
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+
+<link rel = href "stylesheet" = "// maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="L.Control.ZoomBox.css" />
+
+
+    <script src="L.Control.ZoomBox.js"></script>
+	
+
+    <link rel="stylesheet" href="leaflet.magnifyingglass.css" />
+    <link rel="stylesheet" href="Control.MagnifyingGlass.css" />
+	
+	<script src="leaflet.magnifyingglass.js"></script>
+	
+
+	
+<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+<script src="Google.js"></script>
+
+  <style>
+    html, body {width:100%; height:100%; padding: 0; margin: 0;}
+    #map { width: 75%; height:75%; background: black;}
+    #menu { position: absolute; top: 5px; right: 10px; width: 400px; height:60px; background: transparent; z-index:10;}
+    #menu a { 
+      margin: 15px 10px 0 0;
+      float: right;
+      vertical-align: baseline;
+      width: 70px;
+      padding: 10px;
+      text-align: center;
+      font: bold 11px "Helvetica",Arial;
+      line-height: normal;
+      color: #555;
+      border-radius: 4px;
+      border: 1px solid #777777;
+      background: #ffffff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    #menu a.selected,
+    #menu a:hover { 
+      color: #F84F40;
+    }
+	
+	
+	pre.ui-distance {
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  padding:5px 10px;
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  font-size:11px;
+  line-height:18px;
+  border-radius:3px;
+  }
+  
+  
+  </style>
+
+   
+  <script>
+
+  var map;
+    function init(){
+  // initiate leaflet map
+  map = new L.Map('map', { 
+    center: [35,-35],
+    zoom: 3
+  });
+
+  
+  var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+maxZoom: 18
+}).addTo(map);
+
+var ggl = new L.Google();
+var ggl2 = new L.Google('TERRAIN');
+
+
+var layerUrl = 'https://kbarrios05.cartodb.com/api/v2/viz/e0f6f98c-f5d4-11e4-a2d0-0e4fddd5de28/viz.json';
+
+		//Añadimos un control de escala
+		L.control.scale().addTo(map);
+		
+		//control de zoom
+		var control = L.control.zoomBox({
+    modal: true,  // If false (default), it deactivates after each use.  
+                  // If true, zoomBox control stays active until you click on the control to deactivate.
+    // position: "topleft",                  
+    // className: "customClass"  // Class to use to provide icon instead of Font Awesome
+});
+map.addControl(control);
+
+
+ var leaflet = L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+    
+  });
+
+  
+  var sublayers = [];
+
+  var cartoLayer = cartodb.createLayer(map, layerUrl);
+  cartoLayer.on('done', function(layer) {
+    // change the query for the first layer
+    var subLayerOptions = {
+      sql: "SELECT * FROM ufo3",
+      cartocss: "#ufo3{ marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/kbarrios05/assets/20150519095633ufo.png); marker-fill-opacity: 0.5; marker-line-color: #000000;marker-line-width: 1; marker-line-opacity: 1; marker-placement: point; marker-type: ellipse; marker-width: 20.5; marker-fill: #A53ED5; marker-allow-overlap: true;}"
+	
+	}
+
+    var sublayer = layer.getSubLayer(0);
+
+    sublayer.set(subLayerOptions);
+
+    sublayers.push(sublayer);
+  }).on('error', function() {
+    //log the error
+  });
+
+  //we define the queries that will be performed when we click on the buttons, by modifying the SQL of our layer
+  var LayerActions = {
+    all: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3");
+      return true;
+    },
+    menor: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3 WHERE duration_them < 299 ORDER BY  duration_them DESC");
+      return true;
+    },
+	
+	 hora: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3  WHERE duration_them > 3600 ORDER BY  duration_them DESC");
+      return true;
+    },
+	
+	min45: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3 WHERE duration_them BETWEEN 2700 AND 3599");
+      return true;
+    },
+	
+	min30: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3 WHERE duration_them BETWEEN 1800 AND 2699");
+      return true;
+    },
+	
+	min15: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3 WHERE duration_them BETWEEN 900 AND 1799");
+      return true;
+    },
+	
+	min5: function(){
+      sublayers[0].setSQL("SELECT * FROM ufo3 WHERE duration_them BETWEEN 300 AND 899");
+      return true;
+    },
+	
+	
+    mayor: function() {
+      sublayers[0].set({
+        sql: "SELECT * FROM ufo3  WHERE duration_them < 1000 ORDER BY  duration_them DESC",
+       
+
+
+
+
+	   //as it is said, you can also add some CartoCSS code to make your points look like you want for the different queries
+       // cartocss: "#ne_10m_populated_places_simple{ marker-fill: black; }"
+      });
+      return true;
+    }
+  };
+
+  $('.button').click(function() {
+    $('.button').removeClass('selected');
+    $(this).addClass('selected');
+    //this gets the id of the different buttons and calls to LayerActions which responds according to the selected id
+    LayerActions[$(this).attr('id')]();
+  });
+  
+  
+  var baseMaps = {
+    "OpenStreetMaps": osmLayer,
+    "Mapbox": leaflet,
+	"Satélite": ggl,
+	"Tierra": ggl2
+	};
+	
+	var overlayMaps = {
+    "CartoDB": sublayers   
+};
+	
+	
+L.control.layers(baseMaps).addTo(map);
+osmLayer.bringToBack();
+leaflet.setZIndex(-1);
+cartoLayer.addTo(map);
+
+
+
+}
+  
+  </script>
+
+
+
+</head>
+
+
+
+
+
+<body onload="init()">
+<h1> Avistamientos de Ovnis </h1>
+  <div id='map'></div>
+  <div id='menu'>
+
+    <a href="#menor" id="menor" class="button menorq">menos de 5 min.</a>
+	<a href="#min5" id="min5" class="button menorq"> mas de 5 min.</a>
+	<a href="#min15" id="min15" class="button menorq"> mas de 15 min.</a>
+	<a href="#min30" id="min30" class="button menorq"> mas de 30 min.</a>
+	<a href="#min45" id="min45" class="button menorq"> mas de 45 min.</a>	
+	<a href="#hora" id="hora" class="button menorq"> mas de 1 Hora.</a>
+    <a href="#all" id="all" class="button all">Todas las Apariciones
+  </div>
+  
+
+
+</body>
+</html>
