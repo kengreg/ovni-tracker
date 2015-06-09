@@ -3,8 +3,8 @@
     function init(){
   // initiate leaflet map
   map = new L.Map('map', { 
-    center: [35,-35],
-    zoom: 3
+    center: [45,15],
+    zoom: 6
   });
 
   

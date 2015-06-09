@@ -15,7 +15,8 @@
     <link rel="shortcut icon" type="img/x-icon" href="./img/favicon.ico">
     <link rel="stylesheet" href="./css/norz.css">
     <link rel="stylesheet" href="./css/alien.css">
-    <link rel="stylesheet" href="./font-aw-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/ken-bootstrap.min.css">
+    <link rel="stylesheet" href="./font-awesome-4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css">
     <link link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
     <link rel="stylesheet" href="./css/L.Control.ZoomBox.css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="./css/Control.MagnifyingGlass.css">
     <link rel="author" href="humans.txt">
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Alfa+Slab+One">
     <script src="./js/L.Control.ZoomBox.js"></script>
     <!--script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")-->
     <script src="./js/leaflet.magnifyingglass.js"></script>
@@ -37,7 +39,39 @@
     <!-- [if lte IE 8]><link rel="stylesheet" type="text/css" href="./css/ie8-and-down.css" /><![endif]-->
   </head>
   <body onload="init()">
-    <div id="map"></div>
-    <div id="menu"><a id="menor" href="#menor" class="button menorq">menos de 5 min.</a><a id="min5" href="#menor5" class="button menorq">mas de 5 min.</a><a id="min15" href="#menor15" class="button menorq">mas de 15 min.</a><a id="min30" href="#menor30" class="button menorq">mas de 30 min.</a><a id="min45" href="#menor45" class="button menorq">mas de 45 min.</a><a id="hora" href="#hora" class="button menorq">mas de 1 h.</a><a id="all" href="#all" class="button all">Todas las apariciones</a></div>
+    <section id="wrap">
+      <article id="map" class="col-lg-12"></article>
+      <article class="paul">
+        <div class="speech">
+          <div class="oval">
+            <p id="saludo">Hey! quieres saber por dónde he estado?</p>
+          </div>
+        </div><img src="./img/paul.png" alt="Paul">
+      </article>
+      <article id="menu" class="col-lg-12">
+        <ul>
+          <li> <a id="menor" onclick="document.getElementById('saludo').innerHTML = 'No podía quedarme mucho tiempo! me perseguía la policía!!.'" href="#menor" class="button menorq">Menos de 5 min. </a></li>
+          <li> <a id="min5" onclick="document.getElementById('saludo').innerHTML = 'Me estaban persiguiendo los reporteros!!'" href="#menor5" class="button menorq">Mas de 5 min.</a></li>
+          <li> <a id="min15" onclick="document.getElementById('saludo').innerHTML = 'Me tome mi tiempo apra comprarme el almuerzo.'" href="#menor15" class="button menorq">Mas de 15 min.</a></li>
+          <li> <a id="min30" onclick="document.getElementById('saludo').innerHTML = 'Me tome mi tiempo para pasear por estos lugares.'" href="#menor30" class="button menorq">mas de 30 min.</a></li>
+          <li><a id="min45" onclick="document.getElementById('saludo').innerHTML = 'Estuve practicando algo de beisbol con unos amigos.'" href="#menor45" class="button menorq">Mas de 45 min.</a></li>
+          <li><a id="hora" onclick="document.getElementById('saludo').innerHTML = 'Me tome una siesta en estos lugares.'" href="#hora" class="button menorq">Mas de 1 h.</a></li>
+          <li><a id="all" onclick="document.getElementById('saludo').innerHTML = 'Mira cuantas personas me han visto!!.'" href="#all" class="button all">Todas las apariciones</a></li>
+        </ul>
+        <footer>
+          <article class="col-lg-4"></article>
+          <article class="col-lg-4">
+            <h2>OVNI
+              <div class="tracktitle">TrackingApp</div>
+              <div class="authortitle">Kiaria Barrios</div>
+            </h2>
+          </article>
+          <article class="col-lg-4"></article>
+          <section class="col-lg-12">
+            <p>Descubre donde ha sido visto "Paul" el alien a nivel mundial!!</p>
+          </section>
+        </footer>
+      </article>
+    </section>
   </body>
 </html>

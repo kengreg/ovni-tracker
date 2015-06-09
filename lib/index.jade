@@ -15,7 +15,8 @@ html(lang="es")
         link(rel="shortcut icon", type="img/x-icon" href="./img/favicon.ico")
         link(rel="stylesheet", href="./css/norz.css" )
         link(rel="stylesheet", href="./css/alien.css" )
-        link(rel="stylesheet", href="./font-aw-4.3.0/css/font-awesome.min.css" )
+        link(rel="stylesheet", href="./css/ken-bootstrap.min.css" )
+        link(rel="stylesheet", href="./font-awesome-4.3.0/css/font-awesome.min.css" )
         link(rel="stylesheet", href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css")
         link(link rel="stylesheet", href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css")
         link(rel="stylesheet", href="./css/L.Control.ZoomBox.css")
@@ -23,6 +24,7 @@ html(lang="es")
         link(rel="stylesheet", href="./css/Control.MagnifyingGlass.css")
         link(rel="author", href="humans.txt")
         script(src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js")
+        link(rel="stylesheet" , type="text/css", href="http://fonts.googleapis.com/css?family=Alfa+Slab+One" )
         script(src="./js/L.Control.ZoomBox.js")
         //script(src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js")
         script(src="./js/leaflet.magnifyingglass.js")
@@ -35,12 +37,41 @@ html(lang="es")
             <script src="./js/respond.min.js"></script><![endif]
         // [if lte IE 8]><link rel="stylesheet" type="text/css" href="./css/ie8-and-down.css" /><![endif]
     body(onload="init()")
-        div#map
-        div#menu
-            a#menor.button.menorq(href="#menor") menos de 5 min.
-            a#min5.button.menorq(href="#menor5") mas de 5 min.
-            a#min15.button.menorq(href="#menor15") mas de 15 min.
-            a#min30.button.menorq(href="#menor30") mas de 30 min.
-            a#min45.button.menorq(href="#menor45") mas de 45 min.
-            a#hora.button.menorq(href="#hora") mas de 1 h.
-            a#all.button.all(href="#all") Todas las apariciones
+        section#wrap
+            article#map.col-lg-12
+            article.paul
+                div.speech
+                    div.oval
+                        p#saludo Hey! quieres saber por dónde he estado?
+                img(src="./img/paul.png", alt="Paul")
+            article#menu.col-lg-12
+                ul
+                    li 
+                        a#menor.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'No podía quedarme mucho tiempo! me perseguía la policía!!.'", href="#menor" ) Menos de 5 min. 
+                    li 
+                        a#min5.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'Me estaban persiguiendo los reporteros!!'", href="#menor5") Mas de 5 min.
+                    li 
+                        a#min15.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'Me tome mi tiempo apra comprarme el almuerzo.'", href="#menor15") Mas de 15 min.
+                    li 
+                        a#min30.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'Me tome mi tiempo para pasear por estos lugares.'", href="#menor30") mas de 30 min.
+                    li
+                        a#min45.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'Estuve practicando algo de beisbol con unos amigos.'", href="#menor45") Mas de 45 min.
+                    li
+                        a#hora.button.menorq(onclick="document.getElementById('saludo').innerHTML = 'Me tome una siesta en estos lugares.'", href="#hora") Mas de 1 h.
+                    li
+                        a#all.button.all(onclick="document.getElementById('saludo').innerHTML = 'Mira cuantas personas me han visto!!.'", href="#all") Todas las apariciones
+                footer
+                    article.col-lg-4
+                    article.col-lg-4
+                            h2 OVNI
+                                div.tracktitle TrackingApp
+                                div.authortitle Kiaria Barrios
+                    article.col-lg-4
+                    section.col-lg-12
+                        p Descubre donde ha sido visto "Paul" el alien a nivel mundial!!
+
+                
+                
+                
+                
+                
